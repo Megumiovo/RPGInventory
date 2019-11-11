@@ -1,0 +1,68 @@
+name: RPGInventory
+description: Change inventory how you need
+main: ru.endlesscode.rpginventory.RPGInventory
+version: 2.2.0
+website: https://gitlab.com/endlesscodegroup/rpginventory/rpginventory
+authors: [OsipXD, EndlessCode Group, Megumi]
+depend:
+  - ProtocolLib
+  - Vault
+softdepend:
+  - BattleLevels
+  - Skills
+  - Heroes
+  - RacesAndClasses
+  - SkillAPI
+  - MyPet
+  - RPGPlayerLeveling
+  - PlaceholderAPI
+
+commands:
+  rpginventory:
+    description: RPGInventory command.
+    aliases: rpginv
+    usage: /<command>
+
+permissions:
+  rpginventory.admin:
+    description: Gives access to all RPGInventory commands
+    default: op
+    children:
+      rpginventory.container: true
+      rpginventory.user: true
+      rpginventory.open.others: true
+      rpginventory.fixhp.others: true
+  rpginventory.user:
+    description: Gives access to all user commands
+    default: true
+    children:
+      rpginventory.fixhp: true
+      rpginventory.open: true
+  rpginventory.container:
+    description: Allows you to open containers
+    default: op
+  rpginventory.open:
+    description: Allows you to open inventory by command
+    default: true
+  rpginventory.open.others:
+    description: Allows you to open your or other player's inventory by command
+    default: op
+    children:
+      rpginventory.open: true
+  rpginventory.keep.items:
+    description: Player with this permission will not lose any items on dead
+    default: op
+  rpginventory.keep.armor:
+    description: Player with this permission will not lose armor on dead
+    default: op
+  rpginventory.keep.rpginv:
+    description: Player with this permission will not lose items from RPGInventory on dead
+    default: op
+  rpginventory.fixhp:
+    description: Allows you to fix corrupted hp
+    default: true
+  rpginventory.fixhp.others:
+    description: Allows you to fix corrupted hp for you or other players
+    default: op
+    children:
+      rpginventory.textures: true
